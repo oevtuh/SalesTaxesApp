@@ -12,15 +12,25 @@ namespace SalesTaxesTest.Controllers
     public class ProductController : ApiController
     {
         private readonly IProductService _productService;
+        private readonly ModelFactory _modelFactory;
 
         public ProductController(IProductService productService)
         {
             _productService = productService;
+            _modelFactory = new ModelFactory();
         }
 
-        public IEnumerable<Product> Get()
+        public object Get()
         {
-            return _productService.GetProducts();
+            var products = _productService.GetProducts().Select(x => _modelFactory.Create(x));
+
+            return new
+            {
+                content = new
+                {
+                    products = products
+                }
+            };
         }
     }
 }

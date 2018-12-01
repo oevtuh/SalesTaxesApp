@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using SalesTaxesTest.Abstract;
+using SalesTaxesTest.Entities;
 using SalesTaxesTest.Models;
 
 namespace SalesTaxesTest.Services
