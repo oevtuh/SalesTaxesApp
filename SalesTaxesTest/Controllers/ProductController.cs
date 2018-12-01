@@ -6,9 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using SalesTaxesTest.Abstract;
 using SalesTaxesTest.Models;
+using SalesTaxesTest.Shared.Attributes;
 
 namespace SalesTaxesTest.Controllers
 {
+    [EnableCors]
     public class ProductController : ApiController
     {
         private readonly IProductService _productService;

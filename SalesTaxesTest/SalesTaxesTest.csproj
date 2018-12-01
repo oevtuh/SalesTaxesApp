@@ -218,6 +218,7 @@
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Shared\Attributes\EnableCorsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
