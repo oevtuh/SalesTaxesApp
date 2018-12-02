@@ -36,40 +36,14 @@ namespace SalesTaxesTest.Services
             _productService = productService;
         }
 
-        public BasketModel GetBasketModel(OrderEntryRequest orderEntry)
+        public decimal GetTaxes(Product product, int quantity = 1)
         {
-            var basketModel = new BasketModel();
+            double taxRate = GetTaxRate(product);
 
-            if (orderEntry != null && orderEntry.Products.Count > 0)
-            {
-                foreach (var order in orderEntry.Products)
-                {
-                    var product = _productService.GetById(order.Id);
-                    if (product != null)
-                    {
-                        double taxRate = GetTaxRate(product);
-                        decimal productsPrice = product.Price * order.Quantity;
-                        //rounding up to nearest 0.05
-                        decimal taxes = TaxRound(product.Price * (decimal)(taxRate / 100) * order.Quantity);
-                        var basketEntry = new BasketEntryModel()
-                        {
-                            Id = product.Id,
-                            Quantity = order.Quantity,
-                            Amount = productsPrice + taxes,
-                            Name = product.Name
-                        };
-                        basketModel.Products.Add(basketEntry);
-                        basketModel.Taxes += taxes;
-                        basketModel.Total += productsPrice + taxes;
-                    }
-                }
-            }
-
-            return basketModel;
+            return TaxRound(product.Price * (decimal)(taxRate / 100) * quantity);
         }
 
-
-        private double GetTaxRate(Product product)
+        public double GetTaxRate(Product product)
         {
             var taxRate = GetBaseTaxRate(product.Category.Id);
             if (product.Imported)

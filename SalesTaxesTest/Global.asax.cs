@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Ninject;
 using Ninject.Web.WebApi;
+using SalesTaxesTest.Infrastracture;
 
 namespace SalesTaxesTest
 {
@@ -20,6 +21,7 @@ namespace SalesTaxesTest
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperWebConfiguration.Configure();
         }
     }
 }

@@ -66,6 +66,7 @@ namespace SalesTaxesTest.App_Start
         {
             kernel.Bind<IProductService>().To<ProductService>().InSingletonScope();
             kernel.Bind<ITaxesService>().To<TaxesService>().InSingletonScope();
+            kernel.Bind<IBasketService>().To<BasketService>().InSingletonScope();
         }
     }
 }
