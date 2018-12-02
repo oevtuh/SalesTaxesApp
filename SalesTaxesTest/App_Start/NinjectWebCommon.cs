@@ -65,6 +65,7 @@ namespace SalesTaxesTest.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IProductService>().To<ProductService>().InSingletonScope();
+            kernel.Bind<ITaxesService>().To<TaxesService>().InSingletonScope();
         }
     }
 }

@@ -1,29 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Web.Http;
+using SalesTaxesTest.Abstract;
 using SalesTaxesTest.Models;
 
 namespace SalesTaxesTest.Controllers
 {
     public class BasketController : ApiController
     {
-        public Object Post(OrderEntryRequest products)
+        private readonly ITaxesService _taxesService;
+
+        public BasketController(ITaxesService taxesService)
         {
-            var basket = new BasketModel()
-            {
-                Taxes = 6.75m,
-                Total = 110,
-                Products = new List<BasketEntryModel>()
-                {
-                    new BasketEntryModel()
-                    {
-                        Id = 1,
-                        Name = "First",
-                        Amount = 12,
-                        Quantity = 2
-                    }
-                }
-            };
+            _taxesService = taxesService;
+        }
+        public Object Post(OrderEntryRequest order)
+        {
+            var basket = _taxesService.GetBasketModel(order);
 
             return new
             {
