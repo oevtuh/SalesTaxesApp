@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using AutoMapper;
 using SalesTaxesTest.Abstract;
 using SalesTaxesTest.Entities;
@@ -8,7 +9,7 @@ using SalesTaxesTest.Shared.Attributes;
 
 namespace SalesTaxesTest.Controllers
 {
-    [EnableCors]
+    [EnableCustomCors]
     public class ProductController : ApiController
     {
         private readonly IProductService _productService;

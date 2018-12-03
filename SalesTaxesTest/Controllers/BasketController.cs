@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using SalesTaxesTest.Abstract;
 using SalesTaxesTest.Models;
 using SalesTaxesTest.Shared.Attributes;
 
 namespace SalesTaxesTest.Controllers
 {
-    [EnableCors]
+    [EnableCustomCors]
     public class BasketController : ApiController
     {
         private readonly ITaxesService _taxesService;

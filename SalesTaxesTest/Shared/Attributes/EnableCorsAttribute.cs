@@ -2,7 +2,7 @@
 
 namespace SalesTaxesTest.Shared.Attributes
 {
-    public class EnableCorsAttribute : ActionFilterAttribute
+    public class EnableCustomCorsAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
